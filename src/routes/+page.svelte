@@ -1,7 +1,8 @@
 <script>
-	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
+
+	export let data;
 </script>
 
 <svelte:head>
@@ -25,7 +26,14 @@
 		try editing <strong>src/routes/+page.svelte</strong>
 	</h2>
 
-	<Counter />
+	<ol>
+		{#each data.announcements as announcement}
+			<li>
+				{announcement.AdvertisedTimeAtLocation.substring(11, 16)}
+				{announcement.ToLocation[0].LocationName}
+			</li>
+		{/each}
+	</ol>
 </section>
 
 <style>
